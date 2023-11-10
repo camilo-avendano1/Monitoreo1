@@ -4,6 +4,7 @@ package co.udea.ssmu.api.controller.viaje;
 
 import co.udea.ssmu.api.model.jpa.model.Viaje;
 import co.udea.ssmu.api.model.jpa.repository.ViajeRepository;
+import co.udea.ssmu.api.services.viaje.IViajeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -13,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/api/viajes")
 public class ViajeController {
     @Autowired
-    private ViajeRepository viajeRepository;
+    private IViajeService viajeService;
 
     @Autowired
     private ViajeRepository ubicacionRepository;
@@ -21,16 +22,18 @@ public class ViajeController {
 
     @PostMapping
     public ResponseEntity<?> crearViaje(@RequestBody Viaje viaje){
+        if (viaje == null)
+            return ResponseEntity.badRequest().body("No se envio ningun viaje");
 
-        viajeRepository.save(viaje);
-        return ResponseEntity.ok(viaje);
+        return ResponseEntity.ok(viajeService.crearViaje(viaje));
+
     }
 
 
 
     @GetMapping
     public ResponseEntity<?> obtenerViajes(){
-        return ResponseEntity.ok(viajeRepository.findAll());
+        return ResponseEntity.ok(viajeService.obtenerViajes());
     }
 
 
