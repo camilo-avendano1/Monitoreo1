@@ -5,6 +5,8 @@ import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.math.BigDecimal;
+
 @Getter
 @Setter
 @Entity
@@ -14,7 +16,7 @@ public class Viaje {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "VIAJE_id_gen")
     @SequenceGenerator(name = "VIAJE_id_gen", sequenceName = "ID_VIAJE_SECUENCIA", allocationSize = 1)
     @Column(name = "ID_VIAJE", nullable = false)
-    private Integer id;
+    private Long id;
 
     @NotNull
     @Column(name = "ID_CONDUCTOR", nullable = false)
@@ -25,11 +27,23 @@ public class Viaje {
     private Long idUsuario;
 
     @NotNull
-    @Column(name = "ID_UBICACION_INICIAL", nullable = false)
-    private Integer idUbicacionInicial;
+    @Column(name = "LATITUD_INICIAL", nullable = false, precision = 9, scale = 6)
+    private BigDecimal latitudInicial;
 
     @NotNull
-    @Column(name = "ID_UBICACION_FINAL", nullable = false)
-    private Integer idUbicacionFinal;
+    @Column(name = "LONGITUD_INICIAL", nullable = false, precision = 9, scale = 6)
+    private BigDecimal longitudInicial;
+
+
+    @NotNull
+    @Column(name = "LATITUD_FINAL", nullable = false, precision = 9, scale = 6)
+    private BigDecimal latitudFinal;
+
+
+    @NotNull
+    @Column(name = "LONGITUD_FINAL", nullable = false, precision = 9, scale = 6)
+    private BigDecimal longitudFinal;
+
+
 
 }
