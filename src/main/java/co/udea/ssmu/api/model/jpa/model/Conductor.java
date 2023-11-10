@@ -41,4 +41,20 @@ public class Conductor {
     @Column(name = "ESTADO", length = 10)
     private String estado;
 
+    @Size(max = 10)
+    @Column(name = "PLACA",  length = 10)
+    private String placa;
+
+    @Size(max = 20)
+    @Column(name = "MODELO",  length = 20)
+    private String modelo;
+
+    @Size(max = 20)
+    @Column(name = "COLOR",  length = 20)
+    private String color;
+
+    @Size(max = 20)
+    @Column(name = "MARCA",  length = 20)
+    private String marca;
+
 }
