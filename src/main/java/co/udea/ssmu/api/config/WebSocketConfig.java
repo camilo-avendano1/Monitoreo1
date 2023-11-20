@@ -13,6 +13,7 @@ public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
     @Override
     public void configureMessageBroker(MessageBrokerRegistry registry) {
         registry.enableSimpleBroker("/taxi");
+//        registry.enableSimpleBroker("/tema");
         registry.setApplicationDestinationPrefixes("/app");
     }
 
