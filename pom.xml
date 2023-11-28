@@ -29,11 +29,32 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-jdbc</artifactId>
         </dependency>
+<!--        <dependency>-->
+<!--            <groupId>com.oracle.database.jdbc</groupId>-->
+<!--            <artifactId>ojdbc8</artifactId>-->
+<!--            <scope>runtime</scope>-->
+<!--        </dependency>-->
+
+
         <dependency>
-            <groupId>com.oracle.database.jdbc</groupId>
-            <artifactId>ojdbc8</artifactId>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
             <scope>runtime</scope>
         </dependency>
+        <dependency>
+            <groupId>org.springdoc</groupId>
+            <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+            <version>2.2.0</version>
+        </dependency>
+        <dependency>
+            <groupId>io.swagger.core.v3</groupId>
+            <artifactId>swagger-annotations</artifactId>
+            <version>2.1.7</version>
+        </dependency>
+
+
+
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>
@@ -206,9 +227,15 @@
                 </configuration>
             </plugin>
 <!--            <plugin>-->
-<!--                <groupId>org.apache.maven.pluging</groupId>-->
+<!--                <groupId>org.apache.maven.plugins</groupId>-->
 <!--                <artifactId>maven-surefire-plugin</artifactId>-->
-<!--                <version>3.2.1</version>-->
+<!--                <version>3.0.0-M5</version>-->
+<!--                <configuration>-->
+<!--                    <excludes>-->
+<!--                        <exclude>**/co/udea/ssmu/api/model/**</exclude>-->
+<!--                        <exclude>**/co/udea/ssmu/api/config/**</exclude>-->
+<!--                    </excludes>-->
+<!--                </configuration>-->
 <!--            </plugin>-->
 
             <plugin>
@@ -227,9 +254,19 @@
                         <goals>
                             <goal>report</goal>
                         </goals>
-                    </execution>
+                        <configuration>
+                        <excludes>
+                            <exclude>src/main/java/co/udea/ssmu/api/model/jpa/model/**</exclude>
+                        </excludes>
+                    </configuration>
+
+
+                </execution>
+
                 </executions>
+
             </plugin>
+
 
 
 
